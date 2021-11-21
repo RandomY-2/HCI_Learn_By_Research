@@ -8,8 +8,10 @@ import {
     Typography,
 } from 'antd';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const App = () => {
+    let navigate = useNavigate();
     const baseURL: String = 'http://127.0.0.1:8000/api';
     const [movieName, setMovieName] = useState<String>("");
     const [movieRecommendations, setMovieRecommendations] = useState<String[]>([]);
@@ -27,7 +29,7 @@ const App = () => {
     }
 
     const handleMovieClick = (index: number): void => {
-        setSelectedMovie(movieRecommendations[index]);
+        navigate(`/movie/${movieRecommendations[index]}`);
     }
 
     return (
@@ -56,7 +58,7 @@ const App = () => {
                             <Col span={10} offset={10}>
                                 <Typography.Title
                                     level={5}
-                                    style={{ color: 'white' }}
+                                    style={{ color: 'white', cursor: 'pointer' }}
                                     onClick={() => handleMovieClick(i)}
                                 >
                                     {movie}
