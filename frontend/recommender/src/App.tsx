@@ -15,7 +15,6 @@ const App = () => {
     const baseURL: String = 'http://127.0.0.1:8000/api';
     const [movieName, setMovieName] = useState<String>("");
     const [movieRecommendations, setMovieRecommendations] = useState<String[]>([]);
-    const [selectedMovie, setSelectedMovie] = useState<String>("");
 
     const handleMovieSearch = async (): Promise<void> => {
         try {
@@ -24,7 +23,7 @@ const App = () => {
             });
             setMovieRecommendations(res.data.recommended_movies);
         } catch (error) {
-            alert(error);
+            alert('Cannot find this movie in dataset, please try another one, sorry');
         }
     }
 
